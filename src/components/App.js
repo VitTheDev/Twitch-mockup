@@ -13,11 +13,19 @@ const App = (props) => {
     <div className="ui container">
       <Header />
       <Switch>
-        <Route exact path="/" render={() => <StreamList />} />
+        <Route exact path="/" render={(props) => <StreamList {...props} />} />
         <Route exact path="/streams/create" render={() => <StreamCreate />} />
-        <Route exact path="/streams/edit" render={() => <StreamEdit />} />
-        <Route exact path="/streams/delete" render={() => <StreamDelete />} />
-        <Route exact path="/streams/show" render={() => <StreamShow />} />
+        <Route exact path="/streams/edit/:id" component={StreamEdit} />
+        <Route
+          exact
+          path="/streams/delete/:id"
+          render={(props) => <StreamDelete {...props} />}
+        />
+        <Route
+          exact
+          path="/streams/show/:id"
+          render={(props) => <StreamShow {...props} />}
+        />
       </Switch>
     </div>
   );
